@@ -1,0 +1,20 @@
+.card {
+    width: 500px;
+    max-width: 90%;
+    background-color: rgba(29, 29, 29, 1);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    height: 370px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.head {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 22px;
+}

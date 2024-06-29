@@ -6,9 +6,9 @@ import styles from './Navigation.module.css';
 const Navigation = () => {
   return (
       <nav className={`${styles.navbar} conatiner`}>
-          <Link to="/" className={`${styles.decoration}`} >
+          <Link to="/" className={styles.decoration} >
               <img src={Logo} alt='Logo' width={40}/>
-              <span  className={`${styles.space}`} >StartUp Board</span>
+              <span  className={styles.space} >StartUp Board</span>
           </Link>
     </nav>
   )

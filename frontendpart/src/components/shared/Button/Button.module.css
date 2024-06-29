@@ -1,0 +1,20 @@
+.buttonmade {
+    padding: 10px 20px;
+    border: none;
+    background: rgba(0, 119, 255, 1);
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+}
+.buttonmade:hover{
+    background: rgb(0, 62, 134);
+}
+.arrow {
+    margin-left: 10px;
+}
