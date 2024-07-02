@@ -1,0 +1,10 @@
+.textinput {
+    background-color: rgba(38, 38, 38, 1);
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 200px;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
