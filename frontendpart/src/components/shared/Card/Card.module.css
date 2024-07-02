@@ -4,8 +4,11 @@
     background-color: rgba(29, 29, 29, 1);
     padding: 30px;
     border-radius: 10px;
-    text-align: center;
     height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .header {
     display: flex;

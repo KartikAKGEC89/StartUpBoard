@@ -1,0 +1,39 @@
+.cardwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.buttonwrapper {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.tabButton {
+    width: 60px;
+    height: 60px;
+    background-color: #262626;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.tabButton:last-child{
+    margin-left: 20px;
+}
+
+.active {
+    background-color: rgba(0, 119, 255, 1);
+}
+
+.buttonwrapper {
+    margin-top: 40px;
+}
+
+.paragraph {
+    color: rgba(196, 197, 197, 1);
+    width: 90%;
+}

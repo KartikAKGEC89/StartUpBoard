@@ -1,10 +1,10 @@
 import React from 'react'
 import StepOtp from '../Steps/StepOtp/StepOtp';
-import StepAvatar from '../Steps/StepAvatar/StepAvatar';
+import StepPhoneEmail from '../Steps/StepPhoneEmail/StepPhoneEmail';
 
 const steps = {
-    1: StepOtp,
-    2: StepAvatar
+    1: StepPhoneEmail,
+    2: StepOtp
 }
 
 const Authenticate = () => {
