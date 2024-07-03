@@ -8,7 +8,7 @@ const steps = {
 }
 
 const Authenticate = () => {
-    const [state, setState] = React.useState(2);
+    const [state, setState] = React.useState(1);
 
     const plus = () => {
         setState(state + 1);
