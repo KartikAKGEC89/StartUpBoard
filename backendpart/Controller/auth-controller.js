@@ -39,7 +39,7 @@ class AuthController {
 
         const [hashedOtp, expires] = hash.split('.');
 
-        if (Date.now() > expires) {
+        if (Date.now() > +expires) {
             return res.status(404).send('Otp Expires');
         }
 
