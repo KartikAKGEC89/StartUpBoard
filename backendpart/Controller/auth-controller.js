@@ -13,7 +13,7 @@ class AuthController {
 
         const valid = 1000 * 60 * 2;
         const expires = Date.now() + valid;
-        const data = `${phone}.${otp}.${expires}`
+        const data = `${phone}.${otp}.${expires}`;
 
         const hash = hashService.hashedOtp(data);
 
@@ -29,6 +29,23 @@ class AuthController {
         }
 
         return res.json({"otp":otp});
+    }
+    verifyOtp(req,res) {
+        const { otp, hash, phone } = req.body;
+
+        if (!otp || !hash || !phone) {
+            res.status(400).send("User made error");
+        }
+
+        const [hashedOtp, expires] = hash.split('.');
+
+        if (Date.now() > expires) {
+            res.status(404).send('Otp Expires');
+        }
+
+        const data = `${phone}.${otp}.${expires}`
+
+        const isValid = otpService.verifyotp(hashedOtp, data);
     }
 }
 module.exports = new AuthController();
