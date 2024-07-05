@@ -19,7 +19,7 @@ class AuthController {
 
         try {
             await otpService.sendotpsms(phone, otp);
-            res.json({
+            return res.json({
                 hash: `${hash}.${expires}`,
                 phone
             })
@@ -28,7 +28,7 @@ class AuthController {
             res.status(500).json({ message: "Message sending fail" });
         }
 
-        res.json({"otp":hash});
+        return res.json({"otp":otp});
     }
 }
 module.exports = new AuthController();
