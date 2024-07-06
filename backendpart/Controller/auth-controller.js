@@ -1,6 +1,7 @@
 const otpService = require("../Services/otp-service");
 const hashService = require('../Services/hash-service');
 const userService = require('../Services/user-service');
+const tokenService = require('../Services/token-service');
 
 class AuthController {
     async sendOtp(req, res) {
@@ -48,16 +49,14 @@ class AuthController {
 
         const isValid = otpService.verifyotp(hashedOtp, data);
 
-        if (isValid) {
+        if (!isValid) {
             return res.status(404).send("Otp is not valid");
         }
 
         let user;
-        let acessToken;
-        let refreshToken;
 
         try {
-                user = await userService.findUser({ phone: phone });
+            user = await userService.findUser({ phone: phone });
 
             if (!user) {
                 user = await userService.createUser({ phone: phone });
@@ -66,6 +65,18 @@ class AuthController {
         } catch (error) {
             res.status(500).send(error);
         }
+
+        const { accessToken, refreshToken } = tokenService.generateTokens({
+            _id: user._id,
+            activated: false,
+        });
+        
+        res.cookie('refreshtoken', refreshToken, {
+            maxAge: 1000 * 60 * 60 * 24 * 30,
+            httpOnly: true
+        });
+
+        res.json({ accessToken });
     }
 }
 module.exports = new AuthController();
