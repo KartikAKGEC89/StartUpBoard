@@ -8,7 +8,7 @@ class AuthController {
         const { phone } = req.body;
 
         if (!phone) {
-            res.status(400).send("Use correct data");
+            return res.status(400).send("Use correct data");
         }
 
         const otp = await otpService.generateotp();
@@ -20,10 +20,11 @@ class AuthController {
         const hash = hashService.hashedOtp(data);
 
         try {
-            await otpService.sendotpsms(phone, otp);
+            // await otpService.sendotpsms(phone, otp);
             return res.json({
                 hash: `${hash}.${expires}`,
-                phone
+                phone,
+                otp
             })
         } catch (error) {
             console.log(error);
@@ -63,7 +64,7 @@ class AuthController {
             }
 
         } catch (error) {
-            res.status(500).send(error);
+            return res.status(500).send(error);
         }
 
         const { accessToken, refreshToken } = tokenService.generateTokens({
