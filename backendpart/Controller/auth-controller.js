@@ -2,6 +2,7 @@ const otpService = require("../Services/otp-service");
 const hashService = require('../Services/hash-service');
 const userService = require('../Services/user-service');
 const tokenService = require('../Services/token-service');
+const UserDto = require("../dtos/user-dto");
 
 class AuthController {
     async sendOtp(req, res) {
@@ -77,7 +78,8 @@ class AuthController {
             httpOnly: true
         });
 
-        res.json({ accessToken, user });
+        const userDto = new UserDto(user);
+        res.json({ accessToken, user: userDto });
     }
 }
 module.exports = new AuthController();
