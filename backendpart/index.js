@@ -5,7 +5,12 @@ const router = require('./routes');
 const Database = require('./database');
 const cors = require('cors');
 
-app.use(cors());
+const corsOption = {
+    credentials: true,
+    origin:['http://localhost:3000']
+}
+
+app.use(cors(corsOption));
 
 const PORT = process.env.PORT;
 Database();
