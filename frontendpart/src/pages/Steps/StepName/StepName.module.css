@@ -1,0 +1,21 @@
+.cardwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.buttonwrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.paragraph {
+    color: rgba(196, 197, 197, 1);
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
