@@ -1,0 +1,49 @@
+.cardwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px);
+}
+
+.buttonwrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.paragraph {
+    color: rgba(196, 197, 197, 1);
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarWrapper {
+    width: 120px;
+    height: 120px;
+    border: 6px solid #0077ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.avtar {
+    height: 90%;
+    width: 90%;
+    object-fit: cover;
+}
+
+.avatarInput {
+    display: none;
+}
+
+.avatarLabel {
+    color: #0077ff;
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+}
