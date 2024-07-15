@@ -4,14 +4,15 @@ import Button from '../../../components/shared/Button/Button'
 import styles from './StepAvatar.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import profile from '../../../images/nobita.png'
-import {setAvatar} from '../../../store/activateSlice'
+import { setAvatar } from '../../../store/activateSlice'
+import { activate } from '../../../Api'
 
 const StepAvatar = ({ onNext }) => {
-  const { name } = useSelector((state) => state.activate)
+  const { name, avatar } = useSelector((state) => state.activate)
   const [profilepic, setProfilePic] = React.useState(profile);
   const dispatch = useDispatch();
 
-    function captureImage(event) {
+  function captureImage(event) {
       // console.log('captureImage function called');
       if (event.target.files.length > 0) {
       // console.log('File selected:', event.target.files[0]);
@@ -37,6 +38,15 @@ const StepAvatar = ({ onNext }) => {
       console.error('No files selected');
     }
   }
+
+  async function submit() {
+    try {
+      const { data } = await activate({ name, avatar });
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <div className={styles.cardwrapper}>
@@ -54,7 +64,7 @@ const StepAvatar = ({ onNext }) => {
           </label>
       </div>
       <div className={styles.buttonwrapper}>
-        <Button text="Next"></Button>
+        <Button text="Next" onClick={submit}></Button>
       </div>
      </Card>
     </div>
