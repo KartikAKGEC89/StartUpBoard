@@ -6,16 +6,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import profile from '../../../images/nobita.png'
 import { setAvatar } from '../../../store/activateSlice'
 import { activate } from '../../../Api'
+import { setAuth } from '../../../store/authSlice';
 
 const StepAvatar = ({ onNext }) => {
+  const dispatch = useDispatch();
   const { name, avatar } = useSelector((state) => state.activate)
   const [profilepic, setProfilePic] = React.useState(profile);
-  const dispatch = useDispatch();
 
   function captureImage(event) {
-      // console.log('captureImage function called');
+     
       if (event.target.files.length > 0) {
-      // console.log('File selected:', event.target.files[0]);
+    
       const file = event.target.files[0];
 
       const reader = new FileReader();
@@ -23,11 +24,10 @@ const StepAvatar = ({ onNext }) => {
       reader.readAsDataURL(file);
 
       reader.onloadend = function () {
-        // console.log('File read completed');
-        // console.log('File content:', reader.result);
+     
         setProfilePic(reader.result);
         const action = setAvatar(reader.result);
-        // console.log('Dispatching action:', action);
+      
         dispatch(action);
       }
 
@@ -42,6 +42,12 @@ const StepAvatar = ({ onNext }) => {
   async function submit() {
     try {
       const { data } = await activate({ name, avatar });
+
+      if (data.auth) {
+        console.log(data.auth)
+        const action = setAuth({ user: data.message });
+        dispatch(action)
+      }
       console.log(data)
     } catch (error) {
       console.log(error);
