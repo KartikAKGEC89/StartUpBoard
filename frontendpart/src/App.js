@@ -23,11 +23,11 @@ function App() {
         />
         <Route 
           path='/activate'
-          element={!isAuth? <Navigate to="/" replace /> : isAuth & !user.isActivated ? <Activate /> : <Navigate to="/rooms" replace />}
+          element={!isAuth? <Navigate to="/" replace /> : isAuth & !user.activated ? <Activate /> : <Navigate to="/rooms" replace />}
         />
         <Route 
           path='/rooms'
-          element={!isAuth? <Navigate to="/" replace /> : isAuth & !user.isActivated ? <Navigate to="/activate" replace /> : <Rooms />}
+          element={!isAuth? <Navigate to="/" replace /> : isAuth & !user.activated ? <Navigate to="/activate" replace /> : <Rooms />}
         />
       </Routes>
     </BrowserRouter>

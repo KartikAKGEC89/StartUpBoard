@@ -10,7 +10,7 @@ class ActivateController {
             return res.status(400).json({ "message": "All fields are required" });
         }
 
-        const buffer = Buffer.from(avatar.replace(/^data:image\/jpeg;base64,/, ''), 'base64');
+        const buffer = Buffer.from(avatar.replace(/^data:image\/(png|jpeg|jpg);base64,/, ''), 'base64');
         const pathname = `${Date.now()}-${Math.random()}.jpeg`;
 
         try {
