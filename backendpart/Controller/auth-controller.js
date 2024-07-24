@@ -90,15 +90,15 @@ class AuthController {
     }
 
     async refresh(req, res) {
-        const { refreshToken: refreshTokenFromCookie } = req.cookies;
-
+        const { refreshtoken: refreshTokenFromCookie } = req.cookies;
+        
         let userData;
         try {
             userData = await tokenService.verifyRefreshtoken(
-                refreshTokenFromCookies
+                refreshTokenFromCookie
             );
         } catch (error) {
-            return res.status(401).json({ message: "Invalid Token" });
+            return res.status(401).json({ message: "Error refresh token" });
         }
 
         try {
@@ -107,8 +107,9 @@ class AuthController {
                 return res.status(401).json({ message: "Invalid Token" });
             }
         } catch (error) {
-            return res.status(500).json({ message: "Internal Error" });
+           return res.status(500).json({ message: "Internal Error" });
         }
+
 
         const user = await userService.findUser({ _id: userData._id });
         if (!user) {
@@ -120,7 +121,7 @@ class AuthController {
         });
         
         try {
-            await tokenService.updateRefreshToken(userId, refreshToken)
+            await tokenService.updateRefreshToken(userData._id, refreshToken)
         } catch (error) {
             res.status(500).json({message:"Internal Server"})
         }
