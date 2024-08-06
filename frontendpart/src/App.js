@@ -1,5 +1,4 @@
 import './App.css';
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Navigation from './components/shared/navigation/Navigation';
@@ -10,13 +9,10 @@ import { useSelector } from 'react-redux';
 
 
 function App() {
-  const [loading, setLoading] = React.useState(true);
 
   const { user, isAuth } = useSelector((state) => state.auth);
   
-  return loading ? (
-  <h1>Loading....</h1>
-  ):(
+  return (
     <BrowserRouter>
       <Navigation />
       <Routes>
