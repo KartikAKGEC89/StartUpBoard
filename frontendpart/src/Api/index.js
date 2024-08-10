@@ -12,6 +12,7 @@ const api = axios.create({
 export const sendotp = (data) => api.post('api/send-otp', data);
 export const verifyotp = (data) => api.post('api/verify-otp', data);
 export const activate = (data) => api.post('/api/activate', data);
+export const logout = (data) => api.post('/api/logout', data);
 
 
 api.interceptors.response.use(
