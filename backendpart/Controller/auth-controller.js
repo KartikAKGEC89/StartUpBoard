@@ -145,8 +145,8 @@ class AuthController {
 
         await tokenService.removeToken(refreshToken);
 
-        res.clearCookie("refreshToken");
-        res.clearCookie("accessToken");
+        res.clearCookie("refreshtoken");
+        res.clearCookie("accesstoken");
 
         res.json({ user: null, auth: false });
         

@@ -1,0 +1,39 @@
+.cardwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px);
+}
+.card {
+    width: 500px;
+    max-width: 90%;
+    background-color: rgba(29, 29, 29, 1);
+    padding: 30px;
+    border-radius: 10px;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.message {
+    font-size: 22px;
+    font-weight: bold;
+}
+.spinner {
+    margin-bottom: 10px;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
