@@ -14,6 +14,8 @@ const Phone = ({onNext}) => {
 
   const submit = async () => {
 
+    if (!phoneNumber) return;
+
     const { data } = await sendotp({ phone: phoneNumber });
     console.log(data);
     dispatch(setOtp({ phone: data.phone, hash: data.hash }));
