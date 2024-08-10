@@ -7,11 +7,13 @@ import profile from '../../../images/nobita.png'
 import { setAvatar } from '../../../store/activateSlice'
 import { activate } from '../../../Api'
 import { setAuth } from '../../../store/authSlice';
+import Loader from '../../../components/shared/Loader/Loader'
 
 const StepAvatar = ({ onNext }) => {
   const dispatch = useDispatch();
   const { name, avatar } = useSelector((state) => state.activate)
   const [profilepic, setProfilePic] = React.useState(profile);
+  const [loading, setLoading] = React.useState(false);
 
   function captureImage(event) {
      
@@ -40,6 +42,7 @@ const StepAvatar = ({ onNext }) => {
   }
 
   async function submit() {
+    setLoading(true);
     try {
       const { data } = await activate({ name, avatar });
 
@@ -51,8 +54,12 @@ const StepAvatar = ({ onNext }) => {
       console.log(data)
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
+
+  if(loading) return <Loader message = "Activation in progress........ "/>
   
   return (
     <div className={styles.cardwrapper}>
