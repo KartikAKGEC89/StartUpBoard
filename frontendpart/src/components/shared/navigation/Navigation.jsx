@@ -17,15 +17,21 @@ const Navigation = () => {
     }
   }
 
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth, user } = useSelector((state) => state.auth);
 
   return (
       <nav className={`${styles.navbar} conatiner`}>
           <Link to="/" className={styles.decoration} >
               <img src={Logo} alt='Logo' width={40}/>
               <span  className={styles.space} >StartUp Board</span>
-          </Link>
-          { isAuth && <button onClick={logoutuser}>Logout</button> }
+      </Link>
+      { isAuth && <div className={styles.navRight}>
+        <h3>{user.name}</h3>
+        <Link to='/'>
+          <img className={ styles.image } src={user.avatar} alt='avatar' width={40} height={40} />
+        </Link>
+        <button className={ styles.logout} onClick={logoutuser}>Logout</button>
+      </div> }
     </nav>
   )
 }

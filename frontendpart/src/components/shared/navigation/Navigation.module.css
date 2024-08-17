@@ -16,3 +16,27 @@
 .space {
     margin-left: 10px;
 }
+
+.navRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.image {
+    border-radius: 50%;
+    margin-left: 12px;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 3px solid #0077ff;
+}
+
+.logout {
+    border: 3px solid #0077ff;
+    padding: 6px;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+}
